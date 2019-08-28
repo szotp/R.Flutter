@@ -25,7 +25,7 @@ dependencies:
     sdk: flutter
   runtime_arb:
     git: 
-      url:https://github.com/szotp/r_flutter.git
+      url: https://github.com/szotp/r_flutter.git
       path: runtime_arb
 
 builders:
