@@ -16,9 +16,6 @@ main(List<String> args) {
   final configRaw = loadYaml(pubspec.readAsStringSync());
   final arguments = parseYamlArguments(configRaw ?? YamlMap());
 
-  // TODO: should be changeable
-  arguments.outputFilename = 'lib/r.g.dart';
-
   final res = parseResources(arguments);
   final contents = generateFile(res, arguments);
 

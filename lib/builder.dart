@@ -39,6 +39,8 @@ Arguments parseYamlArguments(YamlMap yaml) {
     return arguments;
   }
 
+  arguments.outputFilename = yaml["outputFilename"] ?? arguments.outputFilename;
+
   final YamlList ignoreRaw = yaml['ignore'];
   arguments.ignoreAssets = ignoreRaw?.map((x) => x as String)?.toList() ?? [];
   arguments.intlFilename = yaml['intl'];

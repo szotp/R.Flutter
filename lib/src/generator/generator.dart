@@ -18,6 +18,7 @@ String generateFile(Resources res, Arguments arguments) {
   classes = classes.where((item) => item != null).toList();
 
   StringBuffer fullCode = StringBuffer("");
+  fullCode.writeln('//ignore_for_file: directives_ordering, camel_case_types');
   List<String> imports = classes.expand((it) => it.imports).toSet().toList();
   imports.sort();
   for (var import in imports) {
