@@ -58,5 +58,8 @@ DartClass _generateImageAssetsClass(List<Asset> assets) {
 bool isExample;
 
 String createComment(Asset asset) {
-  return "  /// ![${asset.path}](file:///${asset.path})\n";
+  return "  /// ${asset.path}\n";
+
+  /// commented out until IDE can support relative paths
+  //return "  /// ![${asset.path}](file:///${asset.path})\n";
 }
