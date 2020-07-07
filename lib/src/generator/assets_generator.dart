@@ -44,7 +44,7 @@ DartClass _generateImageAssetsClass(List<Asset> assets) {
   }
   final classString = StringBuffer("class Images {\n");
   for (final asset in assets) {
-    //classString.write(createComment(asset));
+    classString.write(createComment(asset));
     classString.writeln(
         "  static const AssetImage ${createVariableName(asset.name)} = AssetImage(\"${asset.path}\");");
   }
@@ -58,17 +58,5 @@ DartClass _generateImageAssetsClass(List<Asset> assets) {
 bool isExample;
 
 String createComment(Asset asset) {
-  String path = asset.fileUri;
-
-  const examplePath = 'r_flutter/example/';
-
-  isExample ??= path.contains(examplePath);
-
-  // a hack to prevent commited assets.dart from changing constantly
-  if (isExample) {
-    path = path.substring(path.indexOf(examplePath) + examplePath.length);
-    path = 'file:///Users/user/path/$path';
-  }
-
-  return "  /// ![]($path)\n";
+  return "  /// ![](file:///${asset.path})\n";
 }
