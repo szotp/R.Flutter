@@ -46,7 +46,7 @@ DartClass _generateImageAssetsClass(List<Asset> assets) {
   for (final asset in assets) {
     //classString.write(createComment(asset));
     classString.writeln(
-        "  static AssetImage get ${createVariableName(asset.name)} => const AssetImage(\"${asset.path}\");");
+        "  static const AssetImage ${createVariableName(asset.name)} = const AssetImage(\"${asset.path}\");");
   }
   classString.writeln("}");
   return DartClass(
