@@ -58,5 +58,5 @@ DartClass _generateImageAssetsClass(List<Asset> assets) {
 bool isExample;
 
 String createComment(Asset asset) {
-  return "  /// ![](file:///${asset.path})\n";
+  return "  /// ![${asset.path}](file:///${asset.path})\n";
 }
