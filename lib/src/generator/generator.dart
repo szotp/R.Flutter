@@ -18,6 +18,8 @@ String generateFile(Resources res, Config arguments) {
   classes = classes.where((item) => item != null).toList();
 
   final fullCode = StringBuffer("");
+  fullCode.writeln(
+      '//ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, camel_case_types');
   final imports = classes.expand((it) => it.imports).toSet().toList();
   imports.sort();
   for (final import in imports) {
