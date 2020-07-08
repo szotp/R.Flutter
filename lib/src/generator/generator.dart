@@ -1,3 +1,4 @@
+import 'package:dart_style/dart_style.dart';
 import 'package:r_flutter/src/arguments.dart';
 import 'package:r_flutter/src/generator/assets_generator.dart';
 import 'package:r_flutter/src/generator/fonts_generator.dart';
@@ -6,6 +7,8 @@ import 'package:r_flutter/src/model/resources.dart';
 import 'package:recase/recase.dart';
 
 import 'i18n/generator.dart';
+
+final _formatter = DartFormatter();
 
 String generateFile(Resources res, Config arguments) {
   var classes = <DartClass>[];
@@ -33,7 +36,8 @@ String generateFile(Resources res, Config arguments) {
   for (final dartClass in classes) {
     fullCode.writeln(dartClass.code);
   }
-  return fullCode.toString();
+
+  return _formatter.format(fullCode.toString());
 }
 
 String createVariableName(String name) {
