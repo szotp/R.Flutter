@@ -22,7 +22,7 @@ String generateFile(Resources res, Config arguments) {
 
   final fullCode = StringBuffer("");
   fullCode.writeln(
-      '//ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, camel_case_types');
+      '//ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, camel_case_types, unnecessary_string_escapes');
   final imports = classes.expand((it) => it.imports).toSet().toList();
   imports.sort();
   for (final import in imports) {
