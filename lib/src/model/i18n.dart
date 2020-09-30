@@ -25,6 +25,12 @@ class Locale {
     return "${languageCode}_${scriptCode}_$countryCode";
   }
 
+  dynamic toJson() => {
+        'languageCode': languageCode,
+        'countryCode': countryCode,
+        'scriptCode': scriptCode,
+      };
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -44,8 +50,9 @@ class I18nLocales {
 
   I18nLocales(this.defaultLocale, this.locales);
 
-  I18nLocale get defaultValues =>
-      locales.firstWhere((locale) => locale.locale == defaultLocale);
+  I18nLocale get defaultValues => locales.firstWhere((locale) => locale.locale == defaultLocale);
+
+  dynamic toJson() => {'defaultLocale': defaultLocale, 'locales': locales};
 }
 
 class I18nLocale {
@@ -53,6 +60,8 @@ class I18nLocale {
   final List<I18nString> strings;
 
   I18nLocale(this.locale, this.strings);
+
+  dynamic toJson() => {'defaultLocale': locale, 'strings': strings};
 }
 
 class I18nString {
@@ -63,4 +72,6 @@ class I18nString {
   I18nString({this.key, this.value, this.placeholders = const []});
 
   String get escapedKey => key.replaceAll(".", "_");
+
+  dynamic toJson() => {'key': key, 'value': value, 'placeholders': placeholders};
 }

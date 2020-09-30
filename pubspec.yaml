@@ -14,9 +14,10 @@ dependencies:
   recase: ^2.0.1
   build: ^1.1.4
   build_config: ^0.4.0
-  mustache_template: ^1.0.0+1
+  mustache: ^1.1.1
 
 dev_dependencies:
   test: any
   build_test: any
   lint: ^1.0.0
+  json_annotation: any

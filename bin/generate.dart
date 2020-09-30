@@ -1,11 +1,14 @@
 #!/usr/bin/env dart
 
+import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:mustache/mustache.dart';
 import 'package:r_flutter/builder.dart';
 import 'package:r_flutter/src/arguments.dart';
-import 'package:r_flutter/src/generator/generator.dart';
+import 'package:r_flutter/src/template.dart';
 import 'package:r_flutter/src/utils/utils.dart';
 import 'package:yaml/yaml.dart';
 
@@ -16,7 +19,13 @@ void main(List<String> args) {
   final config = Config.parsePubspecConfig(configRaw ?? YamlMap());
 
   final res = parseResources(config);
-  final contents = generateFile(res, config);
+
+  final template = Template(templateString);
+  final contents = template.renderString(res);
+
+  const encoder = JsonEncoder.withIndent('  ');
+  log(encoder.convert(res));
+  log(contents);
 
   final outoutFile = File(arguments.outputFilename);
   outoutFile.writeAsStringSync(contents);

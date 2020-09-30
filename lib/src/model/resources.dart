@@ -10,6 +10,12 @@ class Resources {
     this.assets,
     this.i18n,
   });
+
+  Map<String, dynamic> toJson() => {
+        'fonts': fonts,
+        'assets': assets,
+        'i18n': i18n,
+      };
 }
 
 class Assets {
@@ -22,6 +28,11 @@ class Assets {
   const Assets(this.assets, this.declared);
 
   static const empty = Assets([], []);
+
+  Map<String, dynamic> toJson() => {
+        'assets': assets,
+        'declared': declared,
+      };
 }
 
 class Asset {
@@ -44,10 +55,7 @@ class Asset {
     AssetType type,
   }) {
     return Asset(
-        name: name ?? this.name,
-        path: path ?? this.path,
-        fileUri: fileUri ?? this.fileUri,
-        type: type ?? this.type);
+        name: name ?? this.name, path: path ?? this.path, fileUri: fileUri ?? this.fileUri, type: type ?? this.type);
   }
 
   @override
@@ -62,6 +70,13 @@ class Asset {
 
   @override
   int get hashCode => fileUri.hashCode;
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'path': path,
+        'fileUri': fileUri,
+        'type': type,
+      };
 }
 
 class AssetType {
@@ -71,6 +86,8 @@ class AssetType {
 
   static const image = AssetType('image');
   static const stringPath = AssetType('stringPath');
+
+  dynamic toJson() => key;
 }
 
 class CustomAssetType extends AssetType {
@@ -80,8 +97,14 @@ class CustomAssetType extends AssetType {
 
   static const defaultImport = 'asset_classes.dart';
 
-  const CustomAssetType(this.customClass, this.extension, this.import)
-      : super(customClass);
+  const CustomAssetType(this.customClass, this.extension, this.import) : super(customClass);
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'extension': extension,
+        'customClass': customClass,
+        'import': import,
+      };
 }
 
 class StringReference {
@@ -94,4 +117,10 @@ class StringReference {
     this.placeholders,
     this.value,
   });
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'placeholders': placeholders,
+        'value': value,
+      };
 }

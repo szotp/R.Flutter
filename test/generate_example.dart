@@ -2,7 +2,7 @@ import 'dart:io';
 
 import '../bin/generate.dart' as m;
 
-void main() {
+Future<void> main() async {
   Directory.current = 'example';
   m.main([]);
 }

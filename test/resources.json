@@ -1,0 +1,270 @@
+{
+    "fonts": [
+        "TestFont"
+    ],
+    "assets": {
+        "assets": [
+            {
+                "name": "extension",
+                "path": "lib/assets/extension.png",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/extension.png",
+                "type": "image"
+            },
+            {
+                "name": "sub_sub_test_asset",
+                "path": "lib/assets/sub/sub/test_asset.txt",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/sub/sub/test_asset.txt",
+                "type": "stringPath"
+            },
+            {
+                "name": "assets_sub_test_asset",
+                "path": "lib/assets/sub/test_asset.txt",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/sub/test_asset.txt",
+                "type": "stringPath"
+            },
+            {
+                "name": "temp",
+                "path": "lib/assets/sub/temp.txt",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/sub/temp.txt",
+                "type": "stringPath"
+            },
+            {
+                "name": "sub2",
+                "path": "lib/assets/sub2/sub2.txt",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/sub2/sub2.txt",
+                "type": "stringPath"
+            },
+            {
+                "name": "svg",
+                "path": "lib/assets/svg.svg",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/svg.svg",
+                "type": {
+                    "extension": ".svg",
+                    "customClass": "SvgFile",
+                    "import": "asset_classes.dart"
+                }
+            },
+            {
+                "name": "test_asset2",
+                "path": "lib/assets/test_asset2.txt",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/test_asset2.txt",
+                "type": "stringPath"
+            },
+            {
+                "name": "äßet",
+                "path": "lib/assets/äßet.txt",
+                "fileUri": "file:///Users/pszot/Documents/Projects/r_flutter/example/lib/assets/%C3%A4%C3%9Fet.txt",
+                "type": "stringPath"
+            }
+        ],
+        "declared": [
+            "lib/assets/",
+            "lib/assets/sub/",
+            "lib/assets/sub/sub/",
+            "lib/assets/sub2/sub2.txt",
+            "lib/assets/sub2/"
+        ]
+    },
+    "i18n": {
+        "defaultLocale": {
+            "languageCode": "en",
+            "countryCode": null,
+            "scriptCode": null
+        },
+        "locales": [
+            {
+                "defaultLocale": {
+                    "languageCode": "de",
+                    "countryCode": null,
+                    "scriptCode": null
+                },
+                "strings": [
+                    {
+                        "key": "string1",
+                        "value": "Text",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "stringWithPlaceholder",
+                        "value": "String mit {placeholder}",
+                        "placeholders": [
+                            "placeholder"
+                        ]
+                    },
+                    {
+                        "key": "hello",
+                        "value": "Hallo",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "withLineBreak",
+                        "value": "test\n\nmit\nbreak",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "hello_there",
+                        "value": "hallo_hier",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "zh",
+                    "countryCode": "HK",
+                    "scriptCode": null
+                },
+                "strings": [
+                    {
+                        "key": "appName",
+                        "value": "程式名稱",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "string1",
+                        "value": "內容主旨要義",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "zh",
+                    "countryCode": null,
+                    "scriptCode": "Hant"
+                },
+                "strings": [
+                    {
+                        "key": "appName",
+                        "value": "軟件名稱",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "string1",
+                        "value": "內容目錄摘要",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "zh",
+                    "countryCode": null,
+                    "scriptCode": "Hans"
+                },
+                "strings": [
+                    {
+                        "key": "appName",
+                        "value": "程序名称",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "string1",
+                        "value": "內容目录摘要",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "zh",
+                    "countryCode": "TW",
+                    "scriptCode": "Hant"
+                },
+                "strings": [
+                    {
+                        "key": "appName",
+                        "value": "軟體名稱",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "string1",
+                        "value": "內容目錄總概",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "en",
+                    "countryCode": null,
+                    "scriptCode": null
+                },
+                "strings": [
+                    {
+                        "key": "appName",
+                        "value": "AppName",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "string1",
+                        "value": "Content",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "stringWithPlaceholder",
+                        "value": "String with {placeholder}",
+                        "placeholders": [
+                            "placeholder"
+                        ]
+                    },
+                    {
+                        "key": "hello",
+                        "value": "Hola",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "withLineBreak",
+                        "value": "test\n\nlint\nbreak",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "hello_there",
+                        "value": "hello_there",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "pl",
+                    "countryCode": null,
+                    "scriptCode": null
+                },
+                "strings": [
+                    {
+                        "key": "string1",
+                        "value": "tekst",
+                        "placeholders": []
+                    },
+                    {
+                        "key": "stringWithPlaceholder",
+                        "value": "Tekst z {placeholder}",
+                        "placeholders": [
+                            "placeholder"
+                        ]
+                    },
+                    {
+                        "key": "hello",
+                        "value": "cześć",
+                        "placeholders": []
+                    }
+                ]
+            },
+            {
+                "defaultLocale": {
+                    "languageCode": "de",
+                    "countryCode": "AT",
+                    "scriptCode": null
+                },
+                "strings": [
+                    {
+                        "key": "string1",
+                        "value": "Text_AT",
+                        "placeholders": []
+                    }
+                ]
+            }
+        ]
+    }
+}
