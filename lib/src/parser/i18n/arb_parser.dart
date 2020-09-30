@@ -13,7 +13,7 @@ class ArbI18nParser extends I18nParser {
 
     final references = <I18nString>[];
     data.cast<String, dynamic>().forEach((key, value) {
-      if (key.startsWith("@") || !(value is String)) {
+      if (key.startsWith("@") || value is! String) {
         return;
       }
       final valueString = value as String;

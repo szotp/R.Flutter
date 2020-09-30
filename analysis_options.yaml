@@ -1,1 +1,10 @@
 include: package:lint/analysis_options_package.yaml
+
+
+linter:
+  rules:
+    avoid_escaping_inner_quotes: false
+    avoid_redundant_argument_values: false
+    unnecessary_string_escapes: false
+    leading_newlines_in_multiline_strings: false
+    unnecessary_raw_strings: false

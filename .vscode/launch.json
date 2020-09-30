@@ -11,6 +11,12 @@
             "program": "example/lib/main.dart"
         },
         {
+            "name": "example build",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/generate_example.dart"
+        },
+        {
             "name": "test",
             "type": "dart",
             "request": "launch",
