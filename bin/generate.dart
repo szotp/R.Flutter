@@ -20,15 +20,11 @@ void main(List<String> args) {
 
   final res = parseResources(config);
 
-  final template = Template(templateString);
-  final contents = template.renderString(res);
-
   const encoder = JsonEncoder.withIndent('  ');
   log(encoder.convert(res));
-  log(contents);
 
   final outoutFile = File(arguments.outputFilename);
-  outoutFile.writeAsStringSync(contents);
+  //outoutFile.writeAsStringSync(contents);
 
   // ignore: avoid_print
   print("${outoutFile.path} generated successfully");

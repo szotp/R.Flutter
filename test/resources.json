@@ -73,7 +73,7 @@
         },
         "locales": [
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "de",
                     "countryCode": null,
                     "scriptCode": null
@@ -109,7 +109,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "zh",
                     "countryCode": "HK",
                     "scriptCode": null
@@ -128,7 +128,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "zh",
                     "countryCode": null,
                     "scriptCode": "Hant"
@@ -147,7 +147,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "zh",
                     "countryCode": null,
                     "scriptCode": "Hans"
@@ -166,7 +166,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "zh",
                     "countryCode": "TW",
                     "scriptCode": "Hant"
@@ -185,7 +185,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "en",
                     "countryCode": null,
                     "scriptCode": null
@@ -226,7 +226,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "pl",
                     "countryCode": null,
                     "scriptCode": null
@@ -252,7 +252,7 @@
                 ]
             },
             {
-                "defaultLocale": {
+                "locale": {
                     "languageCode": "de",
                     "countryCode": "AT",
                     "scriptCode": null

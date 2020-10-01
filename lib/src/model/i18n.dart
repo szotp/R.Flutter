@@ -1,3 +1,5 @@
+import 'package:r_flutter/src/utils/utils.dart';
+
 class Locale {
   final String languageCode;
   final String countryCode;
@@ -24,6 +26,12 @@ class Locale {
     }
     return "${languageCode}_${scriptCode}_$countryCode";
   }
+
+  static Locale fromJson(Map<String, dynamic> map) => Locale.fromSubtags(
+        languageCode: map.get('languageCode'),
+        scriptCode: map.get('scriptCode'),
+        countryCode: map.get('countryCode'),
+      );
 
   dynamic toJson() => {
         'languageCode': languageCode,
@@ -52,6 +60,11 @@ class I18nLocales {
 
   I18nLocale get defaultValues => locales.firstWhere((locale) => locale.locale == defaultLocale);
 
+  static I18nLocales fromJson(Map<String, dynamic> json) => I18nLocales(
+        Locale.fromJson(json['defaultLocale'] as Map<String, dynamic>),
+        (json['locales'] as List).map((e) => I18nLocale.fromJson(e as Map<String, dynamic>)).toList(),
+      );
+
   dynamic toJson() => {'defaultLocale': defaultLocale, 'locales': locales};
 }
 
@@ -61,7 +74,12 @@ class I18nLocale {
 
   I18nLocale(this.locale, this.strings);
 
-  dynamic toJson() => {'defaultLocale': locale, 'strings': strings};
+  static I18nLocale fromJson(Map<String, dynamic> json) => I18nLocale(
+        json.get('locale', Locale.fromJson),
+        json.getList('strings', I18nString.fromJson),
+      );
+
+  dynamic toJson() => {'locale': locale, 'strings': strings};
 }
 
 class I18nString {
@@ -72,6 +90,12 @@ class I18nString {
   I18nString({this.key, this.value, this.placeholders = const []});
 
   String get escapedKey => key.replaceAll(".", "_");
+
+  static I18nString fromJson(Map<String, dynamic> json) => I18nString(
+        key: json.get('key'),
+        value: json.get('value'),
+        placeholders: json.getList('placeholders'),
+      );
 
   dynamic toJson() => {'key': key, 'value': value, 'placeholders': placeholders};
 }

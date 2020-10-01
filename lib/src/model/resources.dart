@@ -1,4 +1,5 @@
 import 'package:r_flutter/src/model/i18n.dart';
+import 'package:r_flutter/src/utils/utils.dart';
 
 class Resources {
   final List<String> fonts;
@@ -10,6 +11,12 @@ class Resources {
     this.assets,
     this.i18n,
   });
+
+  static Resources fromJson(Map<String, dynamic> json) => Resources(
+        fonts: json.getList('fonts'),
+        assets: json.get('assets', Assets.fromJson),
+        i18n: json.get('i18n', I18nLocales.fromJson),
+      );
 
   Map<String, dynamic> toJson() => {
         'fonts': fonts,
@@ -28,6 +35,11 @@ class Assets {
   const Assets(this.assets, this.declared);
 
   static const empty = Assets([], []);
+
+  static Assets fromJson(Map<String, dynamic> json) => Assets(
+        json.getList('assets', Asset.fromJson),
+        json.getList('declared'),
+      );
 
   Map<String, dynamic> toJson() => {
         'assets': assets,
@@ -71,6 +83,13 @@ class Asset {
   @override
   int get hashCode => fileUri.hashCode;
 
+  static Asset fromJson(Map<String, dynamic> json) => Asset(
+        name: json.get('name'),
+        path: json.get('path'),
+        fileUri: json.get('fileUri'),
+        type: json.get('type', AssetType.fromJson),
+      );
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'path': path,
@@ -87,6 +106,13 @@ class AssetType {
   static const image = AssetType('image');
   static const stringPath = AssetType('stringPath');
 
+  static AssetType fromJson(dynamic value) {
+    if (value is String) {
+      return image.key == value ? image : stringPath;
+    }
+    return CustomAssetType.fromJson(value as Map<String, dynamic>);
+  }
+
   dynamic toJson() => key;
 }
 
@@ -98,6 +124,12 @@ class CustomAssetType extends AssetType {
   static const defaultImport = 'asset_classes.dart';
 
   const CustomAssetType(this.customClass, this.extension, this.import) : super(customClass);
+
+  static CustomAssetType fromJson(Map<String, dynamic> json) => CustomAssetType(
+        json['customclass'] as String,
+        json['customClass'] as String,
+        json['import'] as String,
+      );
 
   @override
   Map<String, dynamic> toJson() => {
@@ -117,6 +149,12 @@ class StringReference {
     this.placeholders,
     this.value,
   });
+
+  static StringReference fromJson(Map<String, dynamic> json) => StringReference(
+        name: json['name'] as String,
+        placeholders: (json['placeholders'] as List).cast(),
+        value: json['value'] as String,
+      );
 
   Map<String, dynamic> toJson() => {
         'name': name,
