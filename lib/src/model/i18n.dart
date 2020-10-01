@@ -87,6 +87,8 @@ class I18nString {
   final String value;
   final List<String> placeholders;
 
+  bool get hasPlaceholders => placeholders.isNotEmpty;
+
   I18nString({this.key, this.value, this.placeholders = const []});
 
   String get escapedKey => key.replaceAll(".", "_");

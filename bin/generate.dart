@@ -5,12 +5,20 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:mustache/mustache.dart';
 import 'package:r_flutter/builder.dart';
 import 'package:r_flutter/src/arguments.dart';
-import 'package:r_flutter/src/template.dart';
+import 'package:r_flutter/src/model/resources.dart';
 import 'package:r_flutter/src/utils/utils.dart';
 import 'package:yaml/yaml.dart';
+
+Resources parseResourcesFromArgs(List<String> args) {
+  final arguments = CommandLineArguments()..parse(args);
+
+  final configRaw = safeCast<YamlMap>(loadYaml(File(arguments.pubspecFilename).absolute.readAsStringSync()));
+  final config = Config.parsePubspecConfig(configRaw ?? YamlMap());
+
+  return parseResources(config);
+}
 
 void main(List<String> args) {
   final arguments = CommandLineArguments()..parse(args);

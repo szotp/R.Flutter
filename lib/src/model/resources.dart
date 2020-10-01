@@ -1,8 +1,10 @@
+import 'package:r_flutter/src/generator/generator.dart';
 import 'package:r_flutter/src/model/i18n.dart';
+import 'package:r_flutter/src/parser/fonts_parser.dart';
 import 'package:r_flutter/src/utils/utils.dart';
 
 class Resources {
-  final List<String> fonts;
+  final List<Font> fonts;
   final Assets assets;
   final I18nLocales i18n;
 
@@ -13,7 +15,7 @@ class Resources {
   });
 
   static Resources fromJson(Map<String, dynamic> json) => Resources(
-        fonts: json.getList('fonts'),
+        fonts: json.getList('fonts', Font.fromJson),
         assets: json.get('assets', Assets.fromJson),
         i18n: json.get('i18n', I18nLocales.fromJson),
       );
@@ -32,6 +34,18 @@ class Assets {
   /// Asset paths as declared in pubspec, minus the ignored ones
   final List<String> declared;
 
+  Set<String> get imports => assets
+      .map((e) {
+        final type = e.type;
+        if (type is CustomAssetType) {
+          return type.import;
+        } else {
+          return null;
+        }
+      })
+      .where((element) => element != null)
+      .toSet();
+
   const Assets(this.assets, this.declared);
 
   static const empty = Assets([], []);
@@ -47,11 +61,15 @@ class Assets {
       };
 }
 
+extension Lol on Asset {}
+
 class Asset {
   final String name;
   final String path;
   final String fileUri;
   final AssetType type;
+
+  String get nameSanitized => createVariableName(name);
 
   Asset({
     this.name,
@@ -103,8 +121,8 @@ class AssetType {
 
   const AssetType(this.key);
 
-  static const image = AssetType('image');
-  static const stringPath = AssetType('stringPath');
+  static const image = AssetType('AssetImage');
+  static const stringPath = AssetType('');
 
   static AssetType fromJson(dynamic value) {
     if (value is String) {

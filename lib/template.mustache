@@ -1,0 +1,54 @@
+//ignore_for_file: unnecessary_brace_in_string_interps, non_constant_identifier_names, camel_case_types, unnecessary_string_escapes
+
+import 'package:flutter/widgets.dart';
+
+{{#assets.imports}}
+import '{{.}}';
+{{/assets.imports}}
+
+class Assets {
+    {{#assets.assets}}
+    /// {{{path}}} {{type}}
+    static const {{nameSanitized}} = {{type.key}}('{{{path}}}');
+    
+    {{/assets.assets}}
+}
+
+class I18nData {
+    String getString(String key, [Map<String, String> placeholders]) {
+        return null;
+    }
+}
+
+class I18n {
+    I18nData data;
+    
+    {{#i18n.defaultValues.strings}}
+    static const {{escapedKey}}Key = '{{key}}';
+    /** {{value}} */
+    {{#hasPlaceholders}}
+    String {{escapedKey}}(
+        {{#placeholders}}
+        String {{.}},
+        {{/placeholders}}
+        
+        ) { return data.getString(
+        {{escapedKey}}Key,  {
+        {{#placeholders}}
+        '{{.}}': {{.}},
+        {{/placeholders}}
+        },
+    );}
+    {{/hasPlaceholders}}
+    {{^hasPlaceholders}}
+    String get {{escapedKey}} => data.getString({{escapedKey}}Key);
+    {{/hasPlaceholders}}
+
+    {{/i18n.defaultValues.strings}}
+}
+
+class Fonts {
+    {{#fonts}}
+    static const {{key}} = '{{name}}';
+    {{/fonts}}
+}

@@ -2,6 +2,7 @@
   "appName": "AppName",
   "string1": "Content",
   "stringWithPlaceholder": "String with {placeholder}",
+  "stringWithPlaceholders": "String with {placeholder1} {placeholder2}",
   "hello": "Hola",
   "@hello": {
     "type": "text",

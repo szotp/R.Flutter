@@ -1,22 +1,35 @@
-import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:mustache/mustache.dart';
-import 'package:r_flutter/src/model/resources.dart';
-import 'package:r_flutter/src/template.dart';
+import 'package:watcher/watcher.dart';
 
-// ignore_for_file: unused_import
 import '../bin/generate.dart' as m;
 
 Future<void> main() async {
-  // Directory.current = 'example';
-  // m.main([]);
+  Directory.current = 'example';
+  final uri = await Isolate.resolvePackageUri(Uri.parse('package:r_flutter/template.mustache'));
+  final model = m.parseResourcesFromArgs([]);
+  Directory.current = '..';
 
-  final template = Template(templateString);
-  final jsonFile = File('test/resources.json');
-  final jsonObject = jsonDecode(jsonFile.readAsStringSync()) as Map<String, dynamic>;
-  final model = Resources.fromJson(jsonObject);
+  void render() {
+    try {
+      final templateString = File(uri.path).readAsStringSync();
+      final template = Template(templateString);
+      final render = template.renderString(model);
+      File('example/lib/assets_next.dart').writeAsStringSync(render);
+      log('Rendered!');
+    } catch (e, st) {
+      log('$e');
+    }
+  }
 
-  final render = template.renderString(model);
-  File('test/resources.dart').writeAsStringSync(render);
+  render();
+
+  final watcher = FileWatcher(uri.path);
+  watcher.events.listen((event) {
+    render();
+    log('$event');
+  });
 }
